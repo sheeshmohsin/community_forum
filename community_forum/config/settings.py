@@ -40,32 +40,32 @@ class Common(Configuration):
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
-	'django.contrib.sites',
+        'django.contrib.sites',
         'django.contrib.messages',
         'django.contrib.staticfiles',
     )
 
     THIRD_PARTY_APPS = (
-	'south', # Database migration helpers
-	'crispy_forms', # Form layouts
-	'avatar', # for user avatars
-	'django_extensions',
+        'south', # Database migration helpers
+        'crispy_forms', # Form layouts
+        'avatar', # for user avatars
+        'django_extensions',
     )
 
     LOCAL_APPS = (
-	'forum',
-	'users',
-	'core',
+        'forum',
+        'users',
+        'core',
     )
 
     INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
     INSTALLED_APPS += (
-	# Need to come last for now because of a weird edge case between
-	# South and allauth
-	'allauth', # registration
-	'allauth.account', #registration
-	'allauth.socialaccount', #registration
+        # Need to come last for now because of a weird edge case between
+        # South and allauth
+        'allauth', # registration
+        'allauth.account', #registration
+        'allauth.socialaccount', #registration
     )    
     
     MIDDLEWARE_CLASSES = (
@@ -96,6 +96,9 @@ class Common(Configuration):
     # https://docs.djangoproject.com/en/1.6/topics/i18n/
     
     LANGUAGE_CODE = 'en-us'
+
+    # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
+    SITE_ID = 1
     
     TIME_ZONE = 'UTC'
     
@@ -134,6 +137,10 @@ class Common(Configuration):
             'django.template.loaders.filesystem.Loader',
             'django.template.loaders.app_directories.Loader',
         )
+
+    # See: http://django-crispy-forms.readthedocs.org/en/latest/install.html#template-packs
+    CRISPY_TEMPLATE_PACK = 'bootstrap3'
+    ########## END TEMPLATE CONFIGURATION
 
     STATIC_ROOT = join(os.path.dirname(BASE_DIR), 'venuemonk/staticfiles/')
 
